@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta name="text-scale" content="scale" />
+		<meta name="color-scheme" content="light dark" />
+		<meta name="theme-color" content="#ffffff" />
+		<script>
+			// Runs before first paint so the page never flashes the wrong theme.
+			// Uses the saved choice (light, dark or system), where system follows the device setting.
+			(function () {
+				try {
+					var saved = localStorage.getItem('theme');
+					var pref = saved === 'light' || saved === 'dark' ? saved : 'system';
+					var dark =
+						pref === 'dark' ||
+						(pref === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+					var root = document.documentElement;
+					root.classList.toggle('dark', dark);
+					root.dataset.themePref = pref;
+					var meta = document.querySelector('meta[name="theme-color"]');
+					if (meta) meta.setAttribute('content', dark ? '#18181b' : '#ffffff');
+				} catch (e) {}
+			})();
+		</script>
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
