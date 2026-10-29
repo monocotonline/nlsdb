@@ -1,3 +1,4 @@
+import { ADMIN_PATH } from '#lib/admin-path.js';
 import {
 	BookOpen01Icon,
 	CreditCardIcon,
@@ -22,35 +23,35 @@ export type AdminNavItem = {
 /** The admin sections. Shared by the desktop header and the mobile bottom bar. */
 export const adminNav: AdminNavItem[] = [
 	{
-		href: '/admin',
+		href: ADMIN_PATH,
 		label: 'Products',
 		icon: BookOpen01Icon,
 		submenu: 'products',
-		match: (p) => p === '/admin' || p.startsWith('/admin/books')
+		match: (p) => p === ADMIN_PATH || p.startsWith(`${ADMIN_PATH}/books`)
 	},
 	{
-		href: '/admin/categories',
+		href: `${ADMIN_PATH}/categories`,
 		label: 'Categories',
 		icon: Folder01Icon,
-		match: (p) => p.startsWith('/admin/categories')
+		match: (p) => p.startsWith(`${ADMIN_PATH}/categories`)
 	},
 	{
-		href: '/admin/transactions',
+		href: `${ADMIN_PATH}/transactions`,
 		label: 'Transactions',
 		icon: CreditCardIcon,
-		match: (p) => p.startsWith('/admin/transactions')
+		match: (p) => p.startsWith(`${ADMIN_PATH}/transactions`)
 	},
 	{
-		href: '/admin/support',
+		href: `${ADMIN_PATH}/support`,
 		label: 'Support',
 		icon: CustomerSupportIcon,
 		badge: 'support',
-		match: (p) => p.startsWith('/admin/support')
+		match: (p) => p.startsWith(`${ADMIN_PATH}/support`)
 	},
 	{
-		href: '/admin/admins',
+		href: `${ADMIN_PATH}/admins`,
 		label: 'Admins',
 		icon: ShieldUserIcon,
-		match: (p) => p.startsWith('/admin/admins')
+		match: (p) => p.startsWith(`${ADMIN_PATH}/admins`)
 	}
 ];

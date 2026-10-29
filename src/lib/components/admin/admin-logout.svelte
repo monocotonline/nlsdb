@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { ADMIN_PATH } from '#lib/admin-path.js';
 	import { Logout01Icon } from '@hugeicons/core-free-icons';
 	import Icon from '#lib/components/icon.svelte';
 	import { Button } from '#lib/components/ui/button/index.js';
@@ -7,7 +8,7 @@
 	let { mode = 'full' }: { mode?: 'icon' | 'full' } = $props();
 </script>
 
-<form method="POST" action="/admin/login?/logout">
+<form method="POST" action="{ADMIN_PATH}/login?/logout">
 	{#if mode === 'icon'}
 		<Button type="submit" variant="outline" size="icon" aria-label="Log out">
 			<Icon icon={Logout01Icon} size={18} />

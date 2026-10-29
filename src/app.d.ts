@@ -6,7 +6,7 @@ import type { Customer } from '#lib/types.js';
 declare global {
 	namespace App {
 		interface Locals {
-			/** PocketBase client; authenticated as the admin on /admin routes when logged in. */
+			/** PocketBase client; authenticated as the admin on the admin routes when logged in. */
 			pb: PocketBase;
 			admin: { id: string; email: string; name: string } | null;
 			/** Logged-in shop customer (optional; guests are null). */

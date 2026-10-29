@@ -1,3 +1,4 @@
+import { ADMIN_PATH } from '#lib/admin-path.js';
 import { fail, redirect } from '@sveltejs/kit';
 import { SORTS, catalogueHref, parseCatalogueQuery } from '#lib/catalogue.js';
 import { errorMessage } from '#lib/server/errors.js';
@@ -39,7 +40,7 @@ export const load: PageServerLoad = async ({ locals, url, parent }) => {
 
 	// A bookmarked page that no longer exists (items were removed) goes to the last page.
 	if (result.totalPages > 0 && query.page > result.totalPages) {
-		redirect(303, `/admin${catalogueHref(query, { page: result.totalPages })}`);
+		redirect(303, `${ADMIN_PATH}${catalogueHref(query, { page: result.totalPages })}`);
 	}
 
 	return {

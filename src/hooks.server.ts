@@ -1,3 +1,4 @@
+import { ADMIN_PATH, isAdminPath } from '#lib/admin-path.js';
 import { redirect } from '@sveltejs/kit';
 import type { Handle, HandleServerError, ServerInit } from '@sveltejs/kit/hooks';
 import { PB_URL, createPb, toCustomer } from '#lib/server/pb.js';
@@ -37,7 +38,7 @@ export const handleError: HandleServerError = ({ error, event }) => {
 
 export const handle: Handle = async ({ event, resolve }) => {
 	const { pathname } = event.url;
-	const isAdminRoute = pathname === '/admin' || pathname.startsWith('/admin/');
+	const isAdminRoute = isAdminPath(pathname);
 
 	event.locals.pb = createPb();
 	event.locals.admin = null;
@@ -74,8 +75,8 @@ export const handle: Handle = async ({ event, resolve }) => {
 		}
 	}
 
-	if (isAdminRoute && pathname !== '/admin/login' && !event.locals.admin) {
-		redirect(303, '/admin/login');
+	if (isAdminRoute && pathname !== `${ADMIN_PATH}/login` && !event.locals.admin) {
+		redirect(303, `${ADMIN_PATH}/login`);
 	}
 
 	// Every page, the admin included, gets the Editorial look (see layout.css).

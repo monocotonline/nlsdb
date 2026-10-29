@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { ADMIN_PATH } from '#lib/admin-path.js';
 	import { ArrowRight01Icon } from '@hugeicons/core-free-icons';
 	import { page } from '$app/state';
 	import AdminBrand from '#lib/components/admin/admin-brand.svelte';
@@ -19,7 +20,9 @@
 		aria-label="Breadcrumb"
 		class="hidden items-center gap-2 text-xs tracking-[0.1em] uppercase md:flex"
 	>
-		<a href="/admin" class="text-muted-foreground transition-colors hover:text-foreground">Admin</a>
+		<a href={ADMIN_PATH} class="text-muted-foreground transition-colors hover:text-foreground"
+			>Admin</a
+		>
 		{#if section}
 			<Icon icon={ArrowRight01Icon} size={13} class="text-muted-foreground" />
 			<span>{section}</span>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { ADMIN_PATH } from '#lib/admin-path.js';
 	import { Label } from '#lib/components/ui/label/index.js';
 	import * as Select from '#lib/components/ui/select/index.js';
 	import type { Category } from '#lib/types.js';
@@ -39,7 +40,10 @@
 		{:else}
 			Helps customers find it, for example by subject.
 		{/if}
-		<a href="/admin/categories" class="font-medium text-foreground underline underline-offset-4">
+		<a
+			href="{ADMIN_PATH}/categories"
+			class="font-medium text-foreground underline underline-offset-4"
+		>
 			Manage categories
 		</a>
 	</p>

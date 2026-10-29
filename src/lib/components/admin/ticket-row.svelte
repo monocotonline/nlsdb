@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { ADMIN_PATH } from '#lib/admin-path.js';
 	import { ArrowRight01Icon } from '@hugeicons/core-free-icons';
 	import Icon from '#lib/components/icon.svelte';
 	import TicketStatus from '#lib/components/support/ticket-status.svelte';
@@ -13,7 +14,7 @@
 </script>
 
 <a
-	href="/admin/support/{ticket.id}"
+	href="{ADMIN_PATH}/support/{ticket.id}"
 	class={cn(
 		'group flex items-center gap-4 rounded-lg border p-4 transition-colors hover:bg-muted/40 sm:p-5',
 		needsReply && 'border-primary/40'

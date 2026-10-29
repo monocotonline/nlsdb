@@ -11,8 +11,8 @@ cd pocketbase && ./pocketbase serve   # applies pb_migrations on start
 pnpm dev                    # in another terminal
 ```
 
-- Create the first **shop admin** in the PocketBase dashboard (http://127.0.0.1:8090/_/) → `admins` collection → New record. Further admins are registered from `/admin/admins`.
-- Admin login: `/admin/login`.
+- Create the first **shop admin** in the PocketBase dashboard (http://127.0.0.1:8090/_/) → `admins` collection → New record. Further admins are registered from `/nls-console/admins`.
+- Admin login: `/nls-console/login` (the path is set in `src/lib/admin-path.ts`; the route folder `src/routes/nls-console` must match).
 - Customer accounts are optional: they sign up and log in from a dialog (Log in in the header). Guests can always check out without one.
 - After pulling new migrations, restart PocketBase so they apply.
 - With `PAYSTACK_SECRET_KEY` empty, dev uses a mock gateway (`/pay/mock`) so the whole flow can be tried. Production refuses to start payments without a key.

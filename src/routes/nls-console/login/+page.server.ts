@@ -1,9 +1,10 @@
+import { ADMIN_PATH } from '#lib/admin-path.js';
 import { fail, redirect } from '@sveltejs/kit';
 import { ADMIN_COOKIE, setAdminSession } from '#lib/server/admin-session.js';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = ({ locals }) => {
-	if (locals.admin) redirect(303, '/admin');
+	if (locals.admin) redirect(303, ADMIN_PATH);
 };
 
 export const actions: Actions = {
@@ -17,11 +18,11 @@ export const actions: Actions = {
 			return fail(400, { email, message: 'Invalid email or password' });
 		}
 		setAdminSession(cookies, locals.pb.authStore.token);
-		redirect(303, '/admin');
+		redirect(303, ADMIN_PATH);
 	},
 	logout: async ({ cookies, locals }) => {
 		locals.pb.authStore.clear();
 		cookies.delete(ADMIN_COOKIE, { path: '/' });
-		redirect(303, '/admin/login');
+		redirect(303, `${ADMIN_PATH}/login`);
 	}
 };

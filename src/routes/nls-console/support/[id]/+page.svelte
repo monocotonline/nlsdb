@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { ADMIN_PATH } from '#lib/admin-path.js';
 	import { ArrowLeft01Icon, Copy01Icon, Mail01Icon, Tick02Icon } from '@hugeicons/core-free-icons';
 	import { onMount } from 'svelte';
 	import { enhance } from '$app/forms';
@@ -45,7 +46,7 @@
 	}
 </script>
 
-<Button href="/admin/support" variant="ghost" size="sm" class="mb-4 -ml-3">
+<Button href="{ADMIN_PATH}/support" variant="ghost" size="sm" class="mb-4 -ml-3">
 	<Icon icon={ArrowLeft01Icon} /> All conversations
 </Button>
 

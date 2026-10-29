@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { ADMIN_PATH } from '#lib/admin-path.js';
 	import { ArrowDown01Icon } from '@hugeicons/core-free-icons';
 	import { page } from '$app/state';
 	import Icon from '#lib/components/icon.svelte';
@@ -9,7 +10,7 @@
 	const nav = $derived(page.data.productNav);
 	const query = $derived(parseCatalogueQuery(new URLSearchParams(page.url.search)));
 	// Only the products list itself is filtered; elsewhere nothing here is "current".
-	const onList = $derived(page.url.pathname === '/admin');
+	const onList = $derived(page.url.pathname === ADMIN_PATH);
 
 	// Categories are open while looking at books; the chevron opens or closes them from anywhere.
 	// svelte-ignore state_referenced_locally
@@ -25,7 +26,7 @@
 		);
 	const count = 'text-xs tabular-nums text-muted-foreground';
 	const href = (changes: Parameters<typeof catalogueHref>[1]) =>
-		`/admin${catalogueHref({ ...query, q: '', sort: 'newest', page: 1 }, changes)}`;
+		`${ADMIN_PATH}${catalogueHref({ ...query, q: '', sort: 'newest', page: 1 }, changes)}`;
 </script>
 
 {#if nav}
