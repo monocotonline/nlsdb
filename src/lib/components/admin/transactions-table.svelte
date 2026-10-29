@@ -13,7 +13,9 @@
 </script>
 
 <!-- Desktop / tablet layout. -->
-<Card.Root class="py-0">
+<Card.Root
+	class="rounded-none border-y bg-transparent py-0 ring-0 [&_th]:text-[11px] [&_th]:font-medium [&_th]:tracking-[0.14em] [&_th]:text-muted-foreground [&_th]:uppercase"
+>
 	<Table.Root>
 		<Table.Header>
 			<Table.Row>

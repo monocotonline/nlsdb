@@ -13,7 +13,7 @@
 
 <div class="flex items-center gap-3 px-1">
 	<span
-		class="flex size-9 shrink-0 items-center justify-center rounded-full bg-accent text-xs font-semibold text-accent-foreground"
+		class="flex size-9 shrink-0 items-center justify-center rounded-full border text-xs font-medium text-muted-foreground"
 	>
 		{initials}
 	</span>

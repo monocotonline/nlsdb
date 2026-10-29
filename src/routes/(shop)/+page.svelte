@@ -1,12 +1,15 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { BookOpen01Icon, Search01Icon } from '@hugeicons/core-free-icons';
 	import { PAGE_SIZE, catalogueHref, hasFilters } from '#lib/catalogue.js';
+	import Icon from '#lib/components/icon.svelte';
 	import Seo from '#lib/components/seo.svelte';
 	import ActiveFilters from '#lib/components/shop/active-filters.svelte';
 	import BookCard from '#lib/components/shop/book-card.svelte';
 	import CataloguePagination from '#lib/components/shop/catalogue-pagination.svelte';
 	import CatalogueToolbar from '#lib/components/shop/catalogue-toolbar.svelte';
 	import HeroBanner from '#lib/components/shop/hero-banner.svelte';
+	import { Button } from '#lib/components/ui/button/index.js';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -29,6 +32,8 @@
 				? `Showing ${first}–${first + data.products.length - 1} of ${data.total}`
 				: `${data.total} ${data.total === 1 ? 'product' : 'products'}`
 	);
+	// Nothing to browse yet: no toolbar or summary line, just the empty state.
+	const shopEmpty = $derived(data.allCount === 0 && !hasFilters(query) && !data.unknownCategory);
 	const canonical = $derived(`${page.url.origin}/${catalogueHref(query)}`.replace(/\?$/, ''));
 </script>
 
@@ -43,27 +48,34 @@
 <HeroBanner dismissed={data.heroDismissed} />
 
 <section id="products" class="scroll-mt-24 pt-8 sm:pt-12">
-	<CatalogueToolbar
-		{query}
-		categories={data.categories}
-		allCount={data.allCount}
-		total={data.total}
-		bind:layout
-	/>
+	{#if !shopEmpty}
+		<CatalogueToolbar
+			{query}
+			categories={data.categories}
+			allCount={data.allCount}
+			total={data.total}
+			bind:layout
+		/>
 
-	<ActiveFilters
-		category={data.selectedCategory?.name ?? (data.unknownCategory ? query.category : null)}
-		q={query.q}
-		clearCategoryHref={href({ category: '' })}
-		clearSearchHref={href({ q: '' })}
-		clearAllHref={href({ category: '', q: '', sort: 'newest' })}
-	/>
+		<ActiveFilters
+			category={data.selectedCategory?.name ?? (data.unknownCategory ? query.category : null)}
+			q={query.q}
+			clearCategoryHref={href({ category: '' })}
+			clearSearchHref={href({ q: '' })}
+			clearAllHref={href({ category: '', q: '', sort: 'newest' })}
+		/>
 
-	<p class="mt-8 mb-10 eyebrow sm:mt-10 sm:mb-12" aria-live="polite">{heading} · {summary}</p>
+		<p class="mt-8 mb-10 eyebrow sm:mt-10 sm:mb-12" aria-live="polite">{heading} · {summary}</p>
+	{/if}
 
 	{#if data.products.length === 0}
-		<div class="border-y py-24 text-center">
-			<p class="font-serif text-2xl tracking-tight">
+		<div class="mx-auto flex max-w-sm flex-col items-center py-20 text-center sm:py-28">
+			<div
+				class="flex size-14 items-center justify-center rounded-full bg-muted text-muted-foreground"
+			>
+				<Icon icon={shopEmpty ? BookOpen01Icon : Search01Icon} size={22} strokeWidth={1.5} />
+			</div>
+			<h2 class="mt-7 font-serif text-2xl tracking-tight sm:text-3xl">
 				{#if data.unknownCategory}
 					That category doesn't exist
 				{:else if hasFilters(query)}
@@ -71,17 +83,16 @@
 				{:else}
 					No products available yet
 				{/if}
-			</p>
-			<p class="mt-3 text-muted-foreground">
-				{hasFilters(query) ? 'Try a different search or category.' : 'Please check back soon.'}
+			</h2>
+			<p class="mt-3 text-pretty text-muted-foreground">
+				{hasFilters(query)
+					? 'Try a different search or category.'
+					: 'New titles are on their way. Please check back soon.'}
 			</p>
 			{#if hasFilters(query)}
-				<a
-					href={href({ category: '', q: '', sort: 'newest' })}
-					class="mt-8 inline-block text-sm underline underline-offset-4"
-				>
+				<Button href={href({ category: '', q: '', sort: 'newest' })} variant="outline" class="mt-8">
 					Clear filters
-				</a>
+				</Button>
 			{/if}
 		</div>
 	{:else}

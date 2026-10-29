@@ -25,7 +25,7 @@
 			href="/"
 			target="_blank"
 			rel="noopener"
-			class="flex items-center justify-between rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+			class="flex items-center justify-between px-3 py-2 text-xs tracking-[0.1em] text-muted-foreground uppercase transition-colors hover:text-foreground"
 		>
 			View shop
 			<Icon icon={ArrowUpRight01Icon} size={16} />

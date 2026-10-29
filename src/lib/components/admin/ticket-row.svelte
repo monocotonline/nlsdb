@@ -15,7 +15,7 @@
 <a
 	href="/admin/support/{ticket.id}"
 	class={cn(
-		'group flex items-center gap-4 rounded-xl border bg-card p-4 transition-all hover:border-foreground/20 hover:shadow-md sm:p-5',
+		'group flex items-center gap-4 rounded-lg border p-4 transition-colors hover:bg-muted/40 sm:p-5',
 		needsReply && 'border-primary/40'
 	)}
 >

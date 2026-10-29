@@ -9,7 +9,7 @@
 </script>
 
 <!-- Phone layout for one transaction: status and total up top, details below. -->
-<article class="rounded-xl border bg-card">
+<article class="rounded-lg border">
 	<header class="flex items-start justify-between gap-3 p-4 pb-3">
 		<div class="min-w-0">
 			<p class="truncate font-mono text-xs text-muted-foreground">{order.reference}</p>

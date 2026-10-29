@@ -23,7 +23,7 @@
 
 <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 	<div>
-		<h1 class="text-2xl font-semibold">Support</h1>
+		<h1 class="display text-3xl sm:text-4xl">Support</h1>
 		<p class="text-sm text-muted-foreground">
 			Conversations started by customers. Replies show on the customer's private conversation page.
 		</p>
@@ -37,13 +37,11 @@
 </div>
 
 {#if data.tickets.length === 0}
-	<div
-		class="flex flex-col items-center rounded-xl border border-dashed bg-card px-6 py-16 text-center"
-	>
+	<div class="flex flex-col items-center px-6 py-20 text-center">
 		<span class="mb-4 flex size-12 items-center justify-center rounded-full bg-muted">
 			<Icon icon={CustomerSupportIcon} size={22} class="text-muted-foreground" />
 		</span>
-		<p class="font-medium">No conversations</p>
+		<p class="font-serif text-2xl tracking-tight">No conversations</p>
 		<p class="mt-1 text-sm text-muted-foreground">
 			{data.status ? 'Nothing matches this filter.' : 'Messages from customers will appear here.'}
 		</p>

@@ -18,15 +18,17 @@
 				href={item.href}
 				aria-current={active ? 'page' : undefined}
 				class={cn(
-					'flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium transition-colors',
+					'flex items-center gap-3 px-3 py-2.5 text-xs tracking-[0.1em] uppercase transition-colors',
 					item.submenu && 'pr-11',
-					active
-						? 'bg-accent text-accent-foreground'
-						: 'text-muted-foreground hover:bg-muted hover:text-foreground'
+					active ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
 				)}
 			>
-				<Icon icon={item.icon} size={19} strokeWidth={active ? 2 : 1.75} />
-				<span class="flex-1">{item.label}</span>
+				<Icon icon={item.icon} size={18} strokeWidth={active ? 1.9 : 1.5} />
+				<span class="flex-1">
+					<span class={cn('border-b border-transparent pb-0.5', active && 'border-foreground')}>
+						{item.label}
+					</span>
+				</span>
 				{#if item.badge}<NavBadge count={page.data.badges?.[item.badge] ?? 0} />{/if}
 			</a>
 			{#if item.submenu === 'products' && active}

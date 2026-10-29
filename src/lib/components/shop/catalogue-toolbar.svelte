@@ -55,22 +55,22 @@
 	<FilterButton count={activeFilters} onclick={() => (sheetOpen = true)} />
 </div>
 
-<!-- From sm up: categories on the left; search, sort and layout on the right. -->
-<div class="hidden flex-wrap items-center justify-between gap-x-12 gap-y-5 border-y py-5 sm:flex">
+<!-- From sm up, one line: category menu and search on the left; sort and layout on the right. -->
+<div class="hidden flex-wrap items-center gap-x-8 gap-y-4 sm:flex">
 	<CategoryList
 		{categories}
 		{allCount}
 		current={query.category}
 		hrefFor={(category) => href({ category })}
 	/>
-	<div class="flex items-center gap-9">
-		<SearchBox
-			value={query.q}
-			category={query.category}
-			sort={query.sort}
-			onsearch={(q) => go({ q })}
-			class="w-44"
-		/>
+	<SearchBox
+		value={query.q}
+		category={query.category}
+		sort={query.sort}
+		onsearch={(q) => go({ q })}
+		class="w-52"
+	/>
+	<div class="ml-auto flex items-center gap-9">
 		<SortLinks current={query.sort} hrefFor={(sort) => href({ sort })} />
 		<LayoutToggle bind:layout />
 	</div>

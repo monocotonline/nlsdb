@@ -53,7 +53,7 @@
 	<div class="min-w-0 space-y-4">
 		<div class="flex flex-wrap items-start justify-between gap-3">
 			<div class="min-w-0">
-				<h1 class="text-2xl font-semibold tracking-tight text-balance">
+				<h1 class="display text-3xl sm:text-4xl">
 					{ticket.subject || 'No subject'}
 				</h1>
 				<p class="mt-1 text-sm text-muted-foreground">Started {formatDate(ticket.created)}</p>
@@ -61,7 +61,7 @@
 			<TicketStatus {ticket} audience="admin" />
 		</div>
 
-		<Card.Root>
+		<Card.Root class="rounded-lg border bg-transparent ring-0">
 			<Card.Content class="space-y-8">
 				<MessageThread messages={data.messages} viewer="admin" />
 				<div class="border-t pt-6">
@@ -76,7 +76,7 @@
 	</div>
 
 	<aside class="space-y-4 lg:sticky lg:top-0">
-		<Card.Root size="sm">
+		<Card.Root size="sm" class="rounded-lg border bg-transparent ring-0">
 			<Card.Header><Card.Title class="text-sm">Customer</Card.Title></Card.Header>
 			<Card.Content class="space-y-3 text-sm">
 				<div>
@@ -101,7 +101,7 @@
 			</Card.Content>
 		</Card.Root>
 
-		<Card.Root size="sm">
+		<Card.Root size="sm" class="rounded-lg border bg-transparent ring-0">
 			<Card.Header><Card.Title class="text-sm">Let the customer know</Card.Title></Card.Header>
 			<Card.Content class="space-y-3">
 				<p class="text-sm text-muted-foreground">

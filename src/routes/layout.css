@@ -227,9 +227,9 @@
 }
 
 /*
- * Editorial: the look of the shop (everything outside /admin). The `editorial` class is put on
- * <html> by the server for shop pages, so portals such as dialogs inherit it too, and there is
- * no flash. The admin keeps the standard tokens above.
+ * Editorial: the look of the whole site, shop and admin. The `editorial` class is put on
+ * <html> by the server for every page, so portals such as dialogs inherit it too, and there is
+ * no flash. The green tokens above are only the fallback.
  */
 html.editorial {
 	--radius: 0.125rem;

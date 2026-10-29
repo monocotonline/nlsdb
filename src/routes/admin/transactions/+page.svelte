@@ -19,7 +19,7 @@
 
 <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 	<div>
-		<h1 class="text-2xl font-semibold">Transactions</h1>
+		<h1 class="display text-3xl sm:text-4xl">Transactions</h1>
 		<p class="mt-1 max-w-xl text-sm text-muted-foreground">
 			Open an order's menu to update its delivery (Processing, Shipped, Delivered) once it is paid,
 			or to copy a payment link or cancel it while it is unpaid.
@@ -29,13 +29,11 @@
 </div>
 
 {#if data.orders.length === 0}
-	<div
-		class="flex flex-col items-center rounded-xl border border-dashed bg-card px-6 py-16 text-center"
-	>
+	<div class="flex flex-col items-center px-6 py-20 text-center">
 		<span class="mb-4 flex size-12 items-center justify-center rounded-full bg-muted">
 			<Icon icon={CreditCardIcon} size={22} class="text-muted-foreground" />
 		</span>
-		<p class="font-medium">No transactions</p>
+		<p class="font-serif text-2xl tracking-tight">No transactions</p>
 		<p class="mt-1 text-sm text-muted-foreground">
 			{data.status
 				? 'Nothing matches this filter.'

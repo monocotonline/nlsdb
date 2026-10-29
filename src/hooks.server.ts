@@ -78,9 +78,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 		redirect(303, '/admin/login');
 	}
 
-	// Shop pages get the Editorial look (see layout.css); the admin keeps the standard one.
+	// Every page, the admin included, gets the Editorial look (see layout.css).
 	return resolve(event, {
 		transformPageChunk: ({ html }) =>
-			isAdminRoute ? html : html.replace('<html lang="en">', '<html lang="en" class="editorial">')
+			html.replace('<html lang="en">', '<html lang="en" class="editorial">')
 	});
 };

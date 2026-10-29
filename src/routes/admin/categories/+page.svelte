@@ -46,7 +46,7 @@
 <!-- Stacked on phones (button under the text), side by side from sm up. -->
 <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 	<div>
-		<h1 class="text-2xl font-semibold">Categories</h1>
+		<h1 class="display text-3xl sm:text-4xl">Categories</h1>
 		<p class="text-sm text-muted-foreground">
 			Group products by type, course or area of law, for example Books, Clothing or Civil
 			Litigation. They appear in the product form and as filters in the shop.
@@ -67,7 +67,9 @@
 	>
 {/if}
 
-<Card.Root class="py-0">
+<Card.Root
+	class="rounded-none border-y bg-transparent py-0 ring-0 [&_th]:text-[11px] [&_th]:font-medium [&_th]:tracking-[0.14em] [&_th]:text-muted-foreground [&_th]:uppercase"
+>
 	<Table.Root>
 		<Table.Header>
 			<Table.Row>

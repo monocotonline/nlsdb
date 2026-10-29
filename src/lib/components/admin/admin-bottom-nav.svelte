@@ -19,16 +19,13 @@
 					href={item.href}
 					aria-current={active ? 'page' : undefined}
 					class={cn(
-						'flex flex-col items-center gap-1 px-1 pt-2 pb-2.5 text-[11px] font-medium transition-colors',
-						active ? 'text-primary' : 'text-muted-foreground active:text-foreground'
+						'-mt-px flex flex-col items-center gap-1 border-t-2 px-1 pt-2 pb-2.5 text-[11px] tracking-[0.06em] uppercase transition-colors',
+						active
+							? 'border-foreground text-foreground'
+							: 'border-transparent text-muted-foreground active:text-foreground'
 					)}
 				>
-					<span
-						class={cn(
-							'relative flex h-8 w-14 items-center justify-center rounded-full transition-colors',
-							active && 'bg-accent'
-						)}
-					>
+					<span class="relative flex h-8 w-14 items-center justify-center">
 						<Icon icon={item.icon} size={22} strokeWidth={active ? 2 : 1.75} />
 						{#if item.badge}
 							<NavBadge

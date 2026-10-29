@@ -15,11 +15,14 @@
 	<!-- Phones have no sidebar, so the brand lives here. -->
 	<div class="md:hidden"><AdminBrand /></div>
 
-	<nav aria-label="Breadcrumb" class="hidden items-center gap-2 text-sm md:flex">
+	<nav
+		aria-label="Breadcrumb"
+		class="hidden items-center gap-2 text-xs tracking-[0.1em] uppercase md:flex"
+	>
 		<a href="/admin" class="text-muted-foreground transition-colors hover:text-foreground">Admin</a>
 		{#if section}
-			<Icon icon={ArrowRight01Icon} size={14} class="text-muted-foreground" />
-			<span class="font-medium">{section}</span>
+			<Icon icon={ArrowRight01Icon} size={13} class="text-muted-foreground" />
+			<span>{section}</span>
 		{/if}
 	</nav>
 

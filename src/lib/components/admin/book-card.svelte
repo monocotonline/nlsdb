@@ -16,7 +16,7 @@
 </script>
 
 <!-- Phone layout for one book: everything readable, with big tap targets. -->
-<article class="rounded-xl border bg-card p-3">
+<article class="rounded-lg border p-3">
 	<div class="flex gap-3">
 		<BookThumb {book} class="w-16" />
 		<div class="min-w-0 flex-1">

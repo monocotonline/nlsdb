@@ -193,17 +193,34 @@ if (existing.totalItems > 0 && !force && !replace) {
 	process.exit(1);
 }
 
+// Same rules as src/lib/slug.ts (categories require a unique slug).
+const slugify = (name) =>
+	name
+		.toLowerCase()
+		.normalize('NFKD')
+		.replace(/[̀-ͯ]/g, '')
+		.replace(/&/g, ' and ')
+		.replace(/[^a-z0-9]+/g, '-')
+		.replace(/^-+|-+$/g, '') || 'category';
+
 const categoryIds = new Map();
 try {
 	for (const c of await pb.collection('categories').getFullList()) categoryIds.set(c.name, c.id);
 	for (const name of new Set(Object.values(categoryOf))) {
 		if (!categoryIds.has(name)) {
-			categoryIds.set(name, (await pb.collection('categories').create({ name })).id);
+			categoryIds.set(
+				name,
+				(await pb.collection('categories').create({ name, slug: slugify(name) })).id
+			);
 		}
 	}
-} catch {
+} catch (err) {
 	console.error(
 		'Could not use the categories collection. Restart PocketBase to apply the latest migrations.'
+	);
+	console.error(
+		`Underlying error: status ${err?.status ?? '?'}, ${err?.message ?? err}` +
+			(err?.originalError?.cause?.code ? ` (${err.originalError.cause.code})` : '')
 	);
 	process.exit(1);
 }

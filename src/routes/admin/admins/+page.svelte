@@ -34,7 +34,7 @@
 
 <div class="mb-6 flex items-center justify-between gap-4">
 	<div>
-		<h1 class="text-2xl font-semibold">Admins</h1>
+		<h1 class="display text-3xl sm:text-4xl">Admins</h1>
 		<p class="text-sm text-muted-foreground">
 			{data.admins.length}
 			{data.admins.length === 1 ? 'person has' : 'people have'} access to this area.
@@ -43,7 +43,9 @@
 	<Button onclick={openDialog}><Icon icon={Add01Icon} /> Register admin</Button>
 </div>
 
-<Card.Root class="py-0">
+<Card.Root
+	class="rounded-none border-y bg-transparent py-0 ring-0 [&_th]:text-[11px] [&_th]:font-medium [&_th]:tracking-[0.14em] [&_th]:text-muted-foreground [&_th]:uppercase"
+>
 	<Table.Root>
 		<Table.Header>
 			<Table.Row>

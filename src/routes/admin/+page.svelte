@@ -40,7 +40,7 @@
 
 <div class="mb-6 flex items-center justify-between gap-4">
 	<div>
-		<h1 class="text-2xl font-semibold">Products</h1>
+		<h1 class="display text-3xl sm:text-4xl">Products</h1>
 		<p class="text-sm text-muted-foreground">
 			{#if filtered}{data.total} of {data.allCount} products{:else}{data.allCount} listed{/if}
 		</p>
@@ -63,13 +63,13 @@
 />
 
 {#if data.books.length === 0}
-	<div
-		class="flex flex-col items-center rounded-xl border border-dashed bg-card px-6 py-16 text-center"
-	>
+	<div class="flex flex-col items-center px-6 py-20 text-center">
 		<span class="mb-4 flex size-12 items-center justify-center rounded-full bg-muted">
 			<Icon icon={BookOpen01Icon} size={22} class="text-muted-foreground" />
 		</span>
-		<p class="font-medium">{filtered ? 'No products match these filters' : 'No products yet'}</p>
+		<p class="font-serif text-2xl tracking-tight">
+			{filtered ? 'No products match these filters' : 'No products yet'}
+		</p>
 		<p class="mt-1 text-sm text-muted-foreground">
 			{filtered
 				? 'Try a different search, type or category.'

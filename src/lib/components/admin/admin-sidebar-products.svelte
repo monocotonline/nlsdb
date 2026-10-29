@@ -20,10 +20,8 @@
 
 	const link = (active: boolean) =>
 		cn(
-			'flex items-center justify-between gap-3 rounded-md py-1.5 pr-3 text-sm transition-colors',
-			active
-				? 'font-medium text-foreground'
-				: 'text-muted-foreground hover:bg-muted hover:text-foreground'
+			'flex items-center justify-between gap-3 py-1.5 pr-3 text-[13px] transition-colors',
+			active ? 'font-medium text-foreground' : 'text-muted-foreground hover:text-foreground'
 		);
 	const count = 'text-xs tabular-nums text-muted-foreground';
 	const href = (changes: Parameters<typeof catalogueHref>[1]) =>

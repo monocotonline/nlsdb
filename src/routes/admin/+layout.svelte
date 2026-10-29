@@ -35,7 +35,7 @@
 		App shell: exactly one screen tall. The sidebar and header are fixed in place and only
 		<main> scrolls, so nothing shakes or follows you down the page.
 	-->
-	<div class="flex h-dvh overflow-hidden bg-muted/40">
+	<div class="flex h-dvh overflow-hidden bg-background">
 		<AdminSidebar name={data.admin.name} email={data.admin.email} />
 
 		<div class="flex min-w-0 flex-1 flex-col">
@@ -53,7 +53,7 @@
 		<AdminBottomNav />
 	</div>
 {:else}
-	<div class="min-h-screen bg-muted/40">
+	<div class="min-h-screen bg-background">
 		{@render children()}
 	</div>
 {/if}
