@@ -6,6 +6,11 @@
 	"engines": {
 		"node": "22.x"
 	},
+	"pnpm": {
+		"overrides": {
+			"htmlparser2": "10.1.0"
+		}
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
